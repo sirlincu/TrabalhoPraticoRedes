@@ -1,4 +1,3 @@
-
 import socket, sys
 
 def menu():
@@ -19,11 +18,9 @@ def  getArquivo (opcao):
         nomeDoArquivo = 'large.txt'
         return nomeDoArquivo
 
-
 HOST = 'localhost' 
 PORT = 20001       
 BUFFER_SIZE = 1024 
-
 
 def main(argv,arquivo): 
     try:
@@ -36,7 +33,7 @@ def main(argv,arquivo):
 
                             if linha == 'EOF':
 
-                                print('Arquivo recebido: ', arquivo)
+                                print('Arquivo recebido:', arquivo)
 
                                 tempo = cliente.recvfrom(1024)
                                 print(tempo[0].decode('utf-8'))
@@ -67,8 +64,8 @@ if __name__ == "__main__":
             if escolha == 2:
                 break
             elif escolha < 1 or escolha > 2:
-                 print('opcao invalida')
-                 print('tente novamente')
+                 print('Opção Inválida!')
+                 print('Tente novamente...')
             else:
                  menu()
                  x = int(input('Qual sua escolha: '))

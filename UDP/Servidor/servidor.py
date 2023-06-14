@@ -1,7 +1,6 @@
-
 import socket, sys
-from threading import Thread
 import time
+from threading import Thread
 
 HOST = 'localhost'  
 PORT = 20001        
@@ -22,10 +21,10 @@ def main(argv):
                             cont = cont + 1
                         fim = time.time()
                         servidor.sendto('EOF'.encode('utf-8'), informacoes[1])
-                        print("Arquivo enviado: ",informacoes[0].decode('utf-8'))
+                        print("Arquivo enviado:", informacoes[0].decode('utf-8'))
                         tempo = fim - inicio
                         resposta = "\n Tempo gasto no enviado do arquivo: %f \n" % tempo
-                        respostaContador = 'Numero de linhas no arquivo: %d \n' % cont
+                        respostaContador = 'Número de linhas no arquivo: %d \n' % cont
                         servidor.sendto(resposta.encode('utf-8'),informacoes[1])
                         servidor.sendto(respostaContador.encode('utf-8'),informacoes[1])
                  
@@ -37,8 +36,6 @@ def main(argv):
         print("Erro na execução do servidor!!")
         print(error)        
         return             
-
-
 
 if __name__ == "__main__":   
     main(sys.argv[1:])
