@@ -2,6 +2,7 @@ import socket, sys
    
 host ='localhost'
 porta = 7777
+buffer_size = 1024
 
 def menu():
     print('\n')
@@ -29,12 +30,12 @@ def main(argv,arquivo):
                 cliente.send(arquivo.encode('utf-8'))
                 with open(arquivo, 'w') as file:
                     while True:
-                            data = cliente.recv(102400).decode('utf-8')
+                            data = cliente.recv(buffer_size).decode('utf-8')
                             if data == "EOF":
                                 print('Arquivo recebido: ', arquivo)
-                                tempo = cliente.recv(1024).decode('utf-8')
+                                tempo = cliente.recv(buffer_size).decode('utf-8')
                                 print(tempo)
-                                contador = cliente.recv(1024).decode('utf-8')
+                                contador = cliente.recv(buffer_size).decode('utf-8')
                                 print(contador)
                                 break
                             else:                            

@@ -28,7 +28,7 @@ def main(argv,arquivo):
             cliente.sendto(arquivo.encode(), (HOST, PORT))
             with open(arquivo, 'w') as file:
                     while True:
-                            data = cliente.recvfrom(102400)
+                            data = cliente.recvfrom(1024)
                             linha = "{}".format(data[0].decode('utf-8'))
 
                             if linha == 'EOF':
