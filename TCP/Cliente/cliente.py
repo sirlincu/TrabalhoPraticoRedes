@@ -2,11 +2,11 @@ import socket, sys
    
 host ='localhost'
 porta = 7777
-buffer_size = 1024
+buffer_size = 9999999
 
 def menu():
     print('\n')
-    print("--------------Menu de opcoes------------------")
+    print("--------------Menu de opções------------------")
     print('1- Arquivo Pequeno')
     print('2- Arquivo medio')
     print('3- Arquivo grande')
@@ -42,7 +42,7 @@ def main(argv,arquivo):
                                 file.write(data)
     except Exception as error:
         print(error)
-        print('Execao - Programa sera encerrado Lado cliente')
+        print('Exceção - Programa será encerrado! Lado cliente')
         return
 
 
@@ -60,8 +60,8 @@ if __name__ == "__main__":
             if escolha == 2:
                 break
             elif escolha < 1 or escolha > 2:
-                 print('opcao invalida')
-                 print('tente novamente')
+                 print('Opção Inválida!')
+                 print('Tente novamente...')
             else:
                  menu()
                  x = int(input('Qual sua escolha: '))

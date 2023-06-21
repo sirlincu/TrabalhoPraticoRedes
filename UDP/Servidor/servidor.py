@@ -3,8 +3,8 @@ import time
 from threading import Thread
 
 HOST = 'localhost'  
-PORT = 20001        
-BUFFER_SIZE = 1024  
+PORT = 7777        
+BUFFER_SIZE = 9999999  
 
 def main(argv):
     try:
@@ -12,7 +12,7 @@ def main(argv):
              servidor.bind((HOST, PORT))
              while(True):
                 try:
-                      informacoes = servidor.recvfrom(1024)
+                      informacoes = servidor.recvfrom(BUFFER_SIZE)
                       with open(informacoes[0],'r') as arquivo:
                         cont = 0
                         inicio = time.time()
@@ -23,7 +23,7 @@ def main(argv):
                         servidor.sendto('EOF'.encode('utf-8'), informacoes[1])
                         print("Arquivo enviado:", informacoes[0].decode('utf-8'))
                         tempo = fim - inicio
-                        resposta = "\n Tempo gasto no enviado do arquivo: %f \n" % tempo
+                        resposta = "\nTempo gasto no enviado do arquivo: %f \n" % tempo
                         respostaContador = 'Número de linhas no arquivo: %d \n' % cont
                         servidor.sendto(resposta.encode('utf-8'),informacoes[1])
                         servidor.sendto(respostaContador.encode('utf-8'),informacoes[1])
